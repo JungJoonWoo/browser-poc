@@ -1,0 +1,1 @@
+(()=>{const grammarlyId="kbfnbcaeplbcioakkpcpgfkobkghlhen",scriptContents=`window['_docs_annotate_canvas_by_ext'] = "${grammarlyId}";`;if(window.trustedTypes){const policy=window.trustedTypes.createPolicy("gdocsPolicy",{createScript:t=>t}),sanitized=policy.createScript(scriptContents);eval(sanitized)}else eval(scriptContents)})();

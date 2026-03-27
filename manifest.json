@@ -1,0 +1,93 @@
+{
+  "manifest_version": 3,
+  "name": "web-agent",
+  "version": "0.0.176.179",
+  "description": "Web Agent",
+  "permissions": [
+    "activeTab",
+    "debugger",
+    "history",
+    "offscreen",
+    "scripting",
+    "tabs",
+    "cookies",
+    "declarativeNetRequestWithHostAccess",
+    "storage",
+    "sessions",
+    "tabGroups"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEArhB/cdUbxJk3qfjDaa7/RVbRXIA3HCxrGr9bgiCFnfvHzXjePr4Avco0tA+aS/uRljJURWl6eoUYi+uhHfJIUpINLjCFQn03fDnuIXoG3nKTCBroubdEA/dXjQM/jEMilObqCo7yHoze78tYDfehsih7Cu8NYlIxqLYnUBJAPKf0qYSfmSqeVrNY62rnlpUtJQcbu72i/Cbu+CD5J/3GqTRgZY0U5omyEG9Z5rkWKXOAnYsL3jCdndeDSPpnW5d/EmnI8m05qaDHOoMbxTQvcGn4/J19xuCoiafkr/W/9AdTQGUvZc3Wd/KQR2Moan15EgOY+siB8788k+cGbTSvIQIDAQAB",
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "externally_connectable": {
+    "matches": [
+      "https://browser.samsung.com/*",
+      "https://stg.browser.samsung.com/*",
+      "https://dev.browser.samsung.com/*",
+      "*://localhost:*/*"
+    ]
+  },
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "google_docs_web.js"
+      ],
+      "matches": [
+        "https://docs.google.com/*"
+      ]
+    },
+    {
+      "resources": [
+        "overlay.css",
+        "overlay.js"
+      ],
+      "matches": [
+        "<all_urls>"
+      ]
+    }
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "exclude_matches": [
+        "https://browser.samsung.com/ai/*",
+        "https://stg.browser.samsung.com/ai/*",
+        "https://dev.browser.samsung.com/ai/*",
+        "https://localhost/*",
+        "*://samsung.net/*",
+        "*://*.samsung.net/*",
+        "*://ecodesamsung.com/*",
+        "*://*.ecodesamsung.com/*",
+        "*://sidiorgbr.sharepoint.com/*",
+        "*://*.sidiorgbr.sharepoint.com/*",
+        "*://sribhome/*",
+        "*://*.sribhome/*"
+      ],
+      "css": [
+        "content.css"
+      ],
+      "js": [
+        "content.js"
+      ],
+      "run_at": "document_start",
+      "world": "ISOLATED"
+    },
+    {
+      "matches": [
+        "https://docs.google.com/document*"
+      ],
+      "all_frames": true,
+      "js": [
+        "google_docs_cs.js"
+      ],
+      "run_at": "document_start"
+    }
+  ],
+  "commit": "06078829"
+}
